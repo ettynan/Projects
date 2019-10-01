@@ -1,0 +1,22 @@
+[
+  "main_othello/board_test.py::test_constructor",
+  "main_othello/board_test.py::test_play",
+  "main_othello/board_test.py::test_no_more_moves",
+  "main_othello/board_test.py::test_determine_winner",
+  "main_othello/board_test.py::test_computer_move",
+  "main_othello/game_controller_test.py::test_constructor",
+  "main_othello/game_controller_test.py::test_change_players",
+  "main_othello/pieces_test.py::test_constructor",
+  "main_othello/pieces_test.py::test_opposite_color",
+  "main_othello/pieces_test.py::test_player_can_play",
+  "main_othello/pieces_test.py::test_play",
+  "main_othello/pieces_test.py::test_get_pieces",
+  "main_othello/pieces_test.py::test_on_board",
+  "main_othello/pieces_test.py::test_no_more_moves",
+  "main_othello/pieces_test.py::test_computer_move",
+  "main_othello/pieces_test.py::test_determine_winner",
+  "main_othello/single_piece_test.py::test_constructor",
+  "main_othello/single_piece_test.py::test_flip",
+  "main_othello/single_piece_test.py::test_place_piece",
+  "main_othello/single_piece_test.py::test_isEmpty"
+]
