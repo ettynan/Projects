@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Wall</title>
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+    <div class="main-content">
+        <h2>Hello {{ session['name']}}</h2>
+        <form class="logout" action="/delete" method='POST'>
+            <button type="submit" name="button">Logout</button>
+        </form>
+    </div>
+    <form class="logout" action="/message" method='POST'>
+        <textarea name="content" rows="8" cols="80"></textarea>
+        <br> <input type="submit" name="" value="Create Message">
+    </form>
+    <hr>
+    {% for message in messages %}
+    <blockquote>
+            Message #{{ message.id }}
+            {{ message['message'] }}
+        </blockquote>
+            {% for comment in comments %}
+            <ul>
+                {% if message.id == comment.message_id %}
+                    <li>{{ comment.first_name }} says {{ comment['comment']}} on {{ comment.created_at }}</li>
+                {% endif %}
+            </ul>
+            {% endfor %}
+        <form class="logout" action="/comment/{{ message['id']}}" method='POST'>
+            <textarea name="content" rows="8" cols="80"></textarea>
+        <br> <input type="submit" name="" value="Create Comment">
+    </form>
+    <hr>
+    {% endfor %}
+
+</body>
+
+</html>
