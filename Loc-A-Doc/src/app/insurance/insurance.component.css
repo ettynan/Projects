@@ -1,0 +1,106 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+#container{
+    position: relative;
+    display: inline-block;
+}
+#locadoc {
+    position: absolute;
+    width: 0px;
+    padding: 0px;
+
+}
+#social_media {
+    position: relative;
+    padding: 0px;
+    display: inline-block;
+    margin-left: 150%;
+    margin-top: 5%;
+    width: 150px;
+}
+#instagram {
+    width: 30%;
+    margin-right: 30px auto;
+}
+#facebook {
+    width: 30%;
+    margin-right: 30px auto;
+}
+#central_buttons {
+    padding: 0;
+    margin-left: 100%;
+    width: 600px;
+    margin-top: 4.5%;
+}
+
+#buttons {
+    display: inline-block;
+    border: none;
+    padding: .75rem .75rem;
+    margin-bottom: 0px;
+    border-radius: 12px;
+    border-style: solid;
+    border-width: thin;
+    text-decoration: none;
+    background: #f5efeff0;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.space {
+    position: relative;
+    background: #b7b7b7ff;
+    margin: auto;
+    padding: 10px 30px;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 10px;
+    border-radius: 12px;
+    border-style: solid;
+    border-width: thin;
+    text-decoration: none;
+    background: #f5efeff0;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    box-align: center;
+}
+
+.space {
+    background: #b7b7b7ff;
+    margin-top: 10px;
+    padding: 10px 30px;
+}
+ h1{
+    text-align: center;
+    margin-top: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+ p {
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     text-align: justify;
+     font-size: 20px;
+     display: inline-block;
+     padding: 50px;
+ }
+
+.answer {
+    margin: auto;
+    text-align: center;
+    box-align: center;
+}
+ #yes {
+     background: #db4545f0;
+ }

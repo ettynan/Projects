@@ -1,0 +1,30 @@
+<header id="container">
+        <div id="locadoc">
+            <img src="/assets/Logo.png" alt="Logo">
+        </div>
+        <div id="social_media">
+            <div><a href="https://www.instagram.com/loc.a.docboston/" target = "_blank"><img id="instagram" src="/assets/IG_icon.png" alt="social media"></a></div>
+            <div><a href="https://www.facebook.com/loc.a.docboston/" target = "_blank"><img id="instagram" src="/assets/Facebook_icon.png" alt="social media"></a></div>
+        </div>
+        <div id="central_buttons">
+            <button id="buttons">Menu</button>
+            <button id="buttons">About Us</button>
+            <button id="buttons">Our Upcoming Events</button>
+        </div>
+</header>
+<div class="space"></div>
+<div id ="wrapper">
+    <h1>Where are you from?</h1>
+    <p>Click one of the options below.</p>
+    <div id="button_cluster">
+        <button routerLink="/insurance" type="North_America">North America </button>
+        <button routerLink="/insurance" type="South_America">South America</button>
+        <button routerLink="/insurance" type="Asia">Asia</button>
+        <button routerLink="/insurance" type="Australia">Australia</button>
+        <button routerLink="/insurance" type="Africa">Africa</button>
+        <button routerLink="/insurance" type="Europe">Europe</button>
+    </div>
+    <img id= "globe" src="/assets/globe.gif" alt="Spinning Globe">
+    <h3 class = "text-center" >We've located you in: <span [innerHTML] = "loc?.results[0].locations[0].adminArea5"></span></h3>
+
+</div>
