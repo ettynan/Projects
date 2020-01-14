@@ -3,25 +3,30 @@ import requests
 import credentials
 import time
 import glob, random, vlc, sys
+from tinytag import TinyTag
+
 
 api_key = credentials.api_key
 cities = ["Reston"]
 
-if len(sys.argv) <= 1:
-    print("Please specify a folder with mp3 files: ")
-    sys.exit(1)
+# if have keyboard, can use command line:
+# if len(sys.argv) <= 1:
+#     print("Please specify a folder with mp3 files: ")
+#     sys.exit(1)
+# folder = sys.argv[1]
+# playlist = glob.glob(folder + "/*.mp3")
 
-folder = sys.argv[1]
-playlist = glob.glob(folder + "/*.mp3")
+# for no keyboard with raspberry pi, use hardcode
+songs = "/Users/user/Desktop/Projects/soothing_tones/songs"
+playlist = glob.glob(songs + "/*.mp3")
 if len(playlist) == 0:
     print("No songs selected")
     sys.exit(1)
 random.shuffle(playlist)
 
-
 # Weather predictions for cities kept in weather_dict
 weather_dict = {}
-code_set = {200, 201, 202, 210, 211, 212, 221, 230, 231, 232, 800, 802, 803, 804}
+code_set = {200, 201, 202, 210, 211, 212, 221, 230, 231, 232}
 
 def forecast(city):
     """Takes in a city and returns json response of weather data"""
@@ -32,21 +37,22 @@ def forecast(city):
     )
     return response.json()
 
-# will only print if the weather id is in the set.
+# Plays music if the weather id is in the set.
 # Take the weather data in the weather dictionary and look for weather codes in the 200 range
 def getCode(weather_dict):
-    """Given the cities and predictions in weather_dict, determine if thunderstorms are expected- returns boolean 
+    """Given the cities and predictions in weather_dict, determine if thunderstorms- returns boolean 
     value for music"""
     for value in weather_dict.values():
         for key, v in value.items():
             if (key == 'weather'):
                 for k in v:
-                    #if the id is in the set of codes, set music to true, otherwise false
+                    #if the id is in the set of weather codes, set music to true
                     if ('id' in k.keys()):
                         if (k['id'] in code_set):
                             return 1
                         else:
                             return 0
+
 # Loop through cities in the cities variable, getting the forecast, saving
 # each into the weather_dict dictionary, check weather periodically 
 def checkWeather(weather_dict, cities):
@@ -59,20 +65,18 @@ def checkWeather(weather_dict, cities):
         # if getCode returns 1, music is true, so play the music playlist
         music = getCode(weather_dict)
         if music == 1:
-            player = vlc.MediaPlayer()
-            medialist = vlc.MediaList(playlist)
-            mlplayer = vlc.MediaListPlayer()
-            mlplayer.set_media_player(player)
-            mlplayer.set_media_list(medialist)
-            mlplayer.play()
-
-            # Use the current state of player to control when songs launch
-            current_state = player.get_state()
-            while current_state != vlc.State.Ended:
-                current_state = player.get_state()
-            print(current_state)
+            for song in playlist:
+                vlc_instance = vlc.Instance()
+                tag = TinyTag.get(song)
+                player = vlc_instance.media_player_new()
+                media = vlc_instance.media_new(song)
+                player.set_media(media)
+                player.play()
+                print(tag.duration)
+                time.sleep(tag.duration)
+        #check weather every 10 minutes
         else:
-            time.sleep(10)
+            time.sleep(600)
 
 checkWeather(weather_dict, cities)
 
