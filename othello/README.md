@@ -1,8 +1,5 @@
 Desktop Othello app using Python and Processing. Player plays against computer. 
 
-Uses Angular 8, HTML, CSS. Uses an API to get city location 
-of user.
-
 How the ai works: 
 Scans the board from the upper left corner on down for legal moves. Makes the first 
 legal move it finds. 
